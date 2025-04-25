@@ -204,7 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowMultiplier: 0.3
   playerBoost: 0.5
-  slowDuration: 3
+  slowDuration: 5
 --- !u!1 &8458860609572050946
 GameObject:
   m_ObjectHideFlags: 0
