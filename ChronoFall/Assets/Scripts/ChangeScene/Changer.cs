@@ -5,12 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class Changer : MonoBehaviour
 {
+    private FadeOut fadeOut;
+    private void Start()
+    {
+        fadeOut = GetComponent<FadeOut>();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(currentScene.buildIndex + 1);
+            fadeOut.StartFade();
         }
+
     }
 }
