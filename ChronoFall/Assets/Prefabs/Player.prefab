@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3816154804474737093}
   - component: {fileID: 6927011288324299475}
   - component: {fileID: 7940536820984000486}
+  - component: {fileID: 2058915610324834052}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -221,6 +222,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam1: {fileID: 5230778306188244786}
   cam2: {fileID: 0}
+--- !u!114 &2058915610324834052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550794995344112348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dacffcfc7e677c478253379161a1118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stretchAmount: 0.2
+  squashAmount: 0.2
+  jumpStretchAmount: 0.3
+  jumpSquashAmount: 0.15
+  speedThreshold: 0.1
+  transitionSpeed: 5
+  groundCheck: {fileID: 5989625752137337844}
+  groundCheckRadius: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &5230778306188244786
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8458860609572050946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
