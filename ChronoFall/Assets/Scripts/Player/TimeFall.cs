@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class TimeFall : MonoBehaviour
 {
-    public float slowMultiplier = 0.3f;         // Qué tan lento va todo
-    public float playerBoost = 0.5f;            // Cuánto más rápido se mueve el jugador en slow
-    public float slowDuration = 3f;             // Cuántos segundos dura el slow motion
+    public float slowMultiplier = 0.3f;
+    public float playerBoost = 0.5f;
+    public float slowDuration = 3f;
+    public float transitionSpeed = 5f; // Qué tan rápido se hace la transición
 
     private bool isSlowing = false;
     private float timer = 0f;
     private Movement playerMovement;
+
+    private float targetTimeScale = 1f;
 
     void Start()
     {
@@ -31,17 +34,22 @@ public class TimeFall : MonoBehaviour
                 ResetTime();
             }
         }
+
+        // Transición suave entre escalas de tiempo
+        Time.timeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, transitionSpeed * Time.unscaledDeltaTime);
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 
     void ActivateSlowMotion()
     {
-        Time.timeScale = slowMultiplier;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        targetTimeScale = slowMultiplier;
 
         if (playerMovement != null)
         {
             float playerMultiplier = 1f / slowMultiplier * playerBoost;
             playerMovement.SetSpeedMultiplier(playerMultiplier);
+            playerMovement.SetGravityScale(0.5f);
+            playerMovement.SetIsSlowing(true);
         }
 
         timer = slowDuration;
@@ -50,16 +58,17 @@ public class TimeFall : MonoBehaviour
 
     void ResetTime()
     {
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f;
+        targetTimeScale = 1f;
 
         if (playerMovement != null)
         {
             playerMovement.SetSpeedMultiplier(1f);
+            playerMovement.SetGravityScale(1f); // Restaurar gravedad
         }
-
+        playerMovement.SetIsSlowing(false);
         isSlowing = false;
         timer = 0f;
     }
 }
+
 
