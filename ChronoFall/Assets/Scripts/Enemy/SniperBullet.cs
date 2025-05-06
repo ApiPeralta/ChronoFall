@@ -24,8 +24,8 @@ public class SniperBullet : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(currentScene.buildIndex);
+            other.gameObject.GetComponent<Life>().TakeDamage();
+            Destroy(gameObject);
         }
     }
 }
