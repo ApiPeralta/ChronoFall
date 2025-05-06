@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SniperBullet : MonoBehaviour
 {
     public float speed = 15f;
@@ -24,9 +24,8 @@ public class SniperBullet : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Acá podés agregar daño al jugador
-            Debug.Log("Player hit by sniper bullet!");
-            Destroy(gameObject);
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.buildIndex);
         }
     }
 }
