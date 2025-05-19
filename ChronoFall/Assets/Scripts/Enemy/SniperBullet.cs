@@ -27,6 +27,14 @@ public class SniperBullet : MonoBehaviour
             other.gameObject.GetComponent<Life>().TakeDamage();
             Destroy(gameObject);
         }
+        if (other.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
+        if (other.CompareTag("GroundLife"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

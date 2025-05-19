@@ -13,7 +13,7 @@ public class SniperEnemy : MonoBehaviour
     void Start()
     {
         fireTimer = fireInterval;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+
         laserLine = GetComponent<LineRenderer>();
 
         if (laserLine != null)
@@ -30,18 +30,41 @@ public class SniperEnemy : MonoBehaviour
     {
         fireTimer -= Time.deltaTime;
 
+        // Buscar objetivo: jugador real primero, clon si no está
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObj == null)
+        {
+            playerObj = GameObject.FindGameObjectWithTag("Clone");
+            if (playerObj == null)
+            {
+                // No hay objetivos, no apuntar ni disparar
+                if (laserLine != null)
+                {
+                    laserLine.enabled = false;
+                }
+                return;
+            }
+        }
+
+        player = playerObj.transform;
+
+        if (laserLine != null) laserLine.enabled = true;
+
+        // Disparo
         if (fireTimer <= 0f)
         {
             Fire();
             fireTimer = fireInterval;
         }
 
-        // Opcional: apuntar
+        // Apuntar al objetivo
         Vector2 direction = player.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         firePoint.rotation = Quaternion.Euler(0, 0, angle);
 
-        if (laserLine != null && player != null)
+        // Laser visual
+        if (laserLine != null)
         {
             Vector3 startPos = firePoint.position;
             Vector3 dir = (player.position - firePoint.position).normalized;
@@ -50,8 +73,8 @@ public class SniperEnemy : MonoBehaviour
             laserLine.SetPosition(0, startPos);
             laserLine.SetPosition(1, endPos);
         }
-
     }
+
     void Fire()
     {
         GameObject bullet = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);

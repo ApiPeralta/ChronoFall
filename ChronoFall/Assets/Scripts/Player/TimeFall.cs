@@ -48,7 +48,7 @@ public class TimeFall : MonoBehaviour
         {
             float playerMultiplier = 1f / slowMultiplier * playerBoost;
             playerMovement.SetSpeedMultiplier(playerMultiplier);
-            playerMovement.SetGravityScale(0.5f);
+            playerMovement.SetGravityScale(0.7f);
             playerMovement.SetIsSlowing(true);
         }
 

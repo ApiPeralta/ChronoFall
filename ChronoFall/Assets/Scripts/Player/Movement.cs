@@ -13,15 +13,12 @@ public class Movement : MonoBehaviour
     private float moveInput = 0f;
     private float velocityX = 0f;
 
-    public float dashForce = 20f;
-    public float dashCooldown = 1f;
-    private bool canDash = true;
-    private bool isSlowing = false;
-
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask Ground;
     private bool isGrounded;
+    private bool isSlowing = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,11 +28,6 @@ public class Movement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, Ground);
 
-        if (isGrounded)
-        {
-            canDash = true;
-        }
-        // Capturar input con respuesta directa
         moveInput = 0f;
         if (Input.GetKey(KeyCode.A)) moveInput = -1f;
         if (Input.GetKey(KeyCode.D)) moveInput = 1f;
@@ -44,15 +36,8 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-        if (isSlowing && Input.GetKeyDown(KeyCode.LeftShift) && canDash)
-        {
-            StartCoroutine(PerformDash());
-        }
     }
-    public void SetIsSlowing(bool slowing)
-    {
-        isSlowing = slowing;
-    }
+
     void FixedUpdate()
     {
         float targetSpeed = moveInput * moveSpeed * speedMultiplier;
@@ -63,25 +48,30 @@ public class Movement : MonoBehaviour
 
         rb.AddForce(Vector2.right * movement);
     }
+
+    public void SetIsSlowing(bool slowing)
+    {
+        isSlowing = slowing;
+    }
+
+    public bool GetIsSlowing()
+    {
+        return isSlowing;
+    }
+
+    public bool IsGrounded()
+    {
+        return isGrounded;
+    }
+
     public void SetGravityScale(float scale)
     {
         rb.gravityScale = scale;
     }
+
     public void SetSpeedMultiplier(float multiplier)
     {
         speedMultiplier = multiplier;
     }
-    IEnumerator PerformDash()
-    {
-        canDash = false;
-
-        float direction = Input.GetAxisRaw("Horizontal");
-        if (direction == 0f)
-            direction = transform.localScale.x; // Por defecto, hacia donde mira
-
-        rb.velocity = new Vector2(direction * dashForce, rb.velocity.y);
-
-        // Esperás solo 0.1s para evitar spameo en el aire (opcional)
-        yield return new WaitForSecondsRealtime(0.1f);
-    }
 }
+
