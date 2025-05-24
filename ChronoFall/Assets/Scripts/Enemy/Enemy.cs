@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
                 Rigidbody2D playerRb = collision.collider.GetComponent<Rigidbody2D>();
                 if (playerRb != null)
                 {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x, 10f); // Salto rebote
+                    playerRb.velocity = new Vector2(playerRb.velocity.x, 6f); // Salto rebote
                 }
             }
             else
