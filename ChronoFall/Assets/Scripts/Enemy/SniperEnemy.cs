@@ -9,7 +9,7 @@ public class SniperEnemy : MonoBehaviour
     private Transform player;
 
     private LineRenderer laserLine;
-
+    public float aimSpeed = 360f;
     void Start()
     {
         fireTimer = fireInterval;
@@ -49,7 +49,17 @@ public class SniperEnemy : MonoBehaviour
 
         player = playerObj.transform;
 
-        if (laserLine != null) laserLine.enabled = true;
+        if (laserLine != null)
+        {
+            Vector3 startPos = firePoint.position;
+            Vector3 dir = (player.position - firePoint.position).normalized;
+            Vector3 endPos = startPos + dir * 20f;
+
+            laserLine.positionCount = 2;
+            laserLine.SetPosition(0, startPos);
+            laserLine.SetPosition(1, endPos);
+        }
+
 
         // Disparo
         if (fireTimer <= 0f)
@@ -58,21 +68,10 @@ public class SniperEnemy : MonoBehaviour
             fireTimer = fireInterval;
         }
 
-        // Apuntar al objetivo
         Vector2 direction = player.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         firePoint.rotation = Quaternion.Euler(0, 0, angle);
 
-        // Laser visual
-        if (laserLine != null)
-        {
-            Vector3 startPos = firePoint.position;
-            Vector3 dir = (player.position - firePoint.position).normalized;
-            Vector3 endPos = startPos + dir * 20f;
-
-            laserLine.SetPosition(0, startPos);
-            laserLine.SetPosition(1, endPos);
-        }
     }
 
     void Fire()

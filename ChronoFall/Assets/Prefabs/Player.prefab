@@ -137,8 +137,6 @@ MonoBehaviour:
   speedMultiplier: 1
   acceleration: 20
   deceleration: 25
-  dashForce: 20
-  dashCooldown: 1
   groundCheck: {fileID: 5989625752137337844}
   groundCheckRadius: 0.2
   Ground:

@@ -273,9 +273,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashForce: 15
   dashCooldown: 6
-  ghostPrefab: {fileID: 1550794995344112348, guid: 42d312d0f5b4e6644afb3acd162afe5d, type: 3}
-  ghostDuration: 1.8
-  fadeOutDuration: 2
 --- !u!1 &3309711764590599534
 GameObject:
   m_ObjectHideFlags: 0

@@ -2190,6 +2190,46 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_ApplyActiveColorSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1606835386548534758, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
       propertyPath: m_Constraints
       value: 7
