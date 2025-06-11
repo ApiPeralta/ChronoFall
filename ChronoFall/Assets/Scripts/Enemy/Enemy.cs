@@ -27,33 +27,33 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            // Obtenemos la dirección del impacto
-            Vector2 contactPoint = collision.contacts[0].point;
-            Vector2 center = collision.collider.bounds.center;
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.collider.CompareTag("Player"))
+    //    {
+    //        // Obtenemos la dirección del impacto
+    //        Vector2 contactPoint = collision.contacts[0].point;
+    //        Vector2 center = collision.collider.bounds.center;
 
-            bool isPlayerAbove = contactPoint.y > transform.position.y + 0.3f;
+    //        bool isPlayerAbove = contactPoint.y > transform.position.y + 0.3f;
 
-            if (isPlayerAbove)
-            {
-                // El jugador saltó encima: destruir enemigo
-                Destroy(gameObject);
+    //        if (isPlayerAbove)
+    //        {
+    //            // El jugador saltó encima: destruir enemigo
+    //            Destroy(gameObject);
 
-                // Opcional: hacer saltar un poco al jugador al matar al enemigo
-                Rigidbody2D playerRb = collision.collider.GetComponent<Rigidbody2D>();
-                if (playerRb != null)
-                {
-                    playerRb.velocity = new Vector2(playerRb.velocity.x, 6f); // Salto rebote
-                }
-            }
-            else
-            {
-                // El jugador fue golpeado de costado: reiniciar escena
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
-        }
-    }
+    //            // Opcional: hacer saltar un poco al jugador al matar al enemigo
+    //            Rigidbody2D playerRb = collision.collider.GetComponent<Rigidbody2D>();
+    //            if (playerRb != null)
+    //            {
+    //                playerRb.velocity = new Vector2(playerRb.velocity.x, 6f); // Salto rebote
+    //            }
+    //        }
+    //        else
+    //        {
+    //            // El jugador fue golpeado de costado: reiniciar escena
+    //            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //        }
+    //    }
+    //}
 }
