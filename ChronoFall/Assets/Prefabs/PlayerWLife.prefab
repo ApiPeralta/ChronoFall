@@ -218,6 +218,8 @@ MonoBehaviour:
   playerBoost: 0.6
   slowDuration: 5
   transitionSpeed: 5
+  stamina: {fileID: 1188286985212062726, guid: 0786e20bf0204db4d9ac802f60f47bec, type: 3}
+  staminaCost: 20
 --- !u!114 &2058915610324834052
 MonoBehaviour:
   m_ObjectHideFlags: 0
