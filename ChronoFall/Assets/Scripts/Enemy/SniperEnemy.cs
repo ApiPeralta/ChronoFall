@@ -53,7 +53,7 @@ public class SniperEnemy : MonoBehaviour
         {
             Vector3 startPos = firePoint.position;
             Vector3 dir = (player.position - firePoint.position).normalized;
-            Vector3 endPos = startPos + dir * 20f;
+            Vector3 endPos = startPos + dir * 80f;
 
             laserLine.positionCount = 2;
             laserLine.SetPosition(0, startPos);

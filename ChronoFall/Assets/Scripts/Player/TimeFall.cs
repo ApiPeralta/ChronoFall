@@ -48,7 +48,7 @@ public class TimeFall : MonoBehaviour
         {
             float playerMultiplier = 1f / slowMultiplier * playerBoost;
             playerMovement.SetSpeedMultiplier(playerMultiplier);
-            playerMovement.SetGravityScale(0.7f);
+            //playerMovement.SetGravityScale(0.7f); 
             playerMovement.SetIsSlowing(true);
         }
 
@@ -63,7 +63,7 @@ public class TimeFall : MonoBehaviour
         if (playerMovement != null)
         {
             playerMovement.SetSpeedMultiplier(1f);
-            playerMovement.SetGravityScale(1f); // Restaurar gravedad
+/*            playerMovement.SetGravityScale(1f);*/ // Restaurar gravedad
         }
         playerMovement.SetIsSlowing(false);
         isSlowing = false;
