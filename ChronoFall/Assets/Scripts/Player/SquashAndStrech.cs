@@ -20,7 +20,9 @@ public class SquashAndStretch : MonoBehaviour
 
     private void Start()
     {
-        originalScale = transform.localScale;
+        originalScale.x = 1;
+        originalScale.y = 1;
+        originalScale.z = 1;
         rb = GetComponent<Rigidbody2D>();
     }
 
