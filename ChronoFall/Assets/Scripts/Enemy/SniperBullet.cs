@@ -22,11 +22,6 @@ public class SniperBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            other.gameObject.GetComponent<Life>().TakeDamage();
-            Destroy(gameObject);
-        }
         if (other.CompareTag("Ground"))
         {
             Destroy(gameObject);
@@ -34,6 +29,11 @@ public class SniperBullet : MonoBehaviour
         if (other.CompareTag("GroundLife"))
         {
             Destroy(gameObject);
+        }
+        if (other.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

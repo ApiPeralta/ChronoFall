@@ -1439,7 +1439,7 @@ PrefabInstance:
     - target: {fileID: 946036969412295235, guid: e33f14556176bec47a9ef1d10aebbea1, type: 3}
       propertyPath: fadePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 948225257}
     - target: {fileID: 4857427940933195803, guid: e33f14556176bec47a9ef1d10aebbea1, type: 3}
       propertyPath: m_Name
       value: Play

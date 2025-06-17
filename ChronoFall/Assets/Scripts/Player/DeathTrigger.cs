@@ -31,7 +31,7 @@ public class DeathTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!isDead && other.CompareTag("Death"))
+        if (!isDead && (other.CompareTag("Death") || other.CompareTag("Enemy")))
         {
             isDead = true; // bloquea ejecuciones posteriores
 

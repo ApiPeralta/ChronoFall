@@ -1497,9 +1497,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874d364c3658cd84994bfb42190c8f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 100
-  currentStamina: 100
-  staminaSlider: {fileID: 0}
 --- !u!1 &1266203814 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3213889850237223269, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
@@ -2039,7 +2036,7 @@ PrefabInstance:
     - target: {fileID: 946036969412295235, guid: e33f14556176bec47a9ef1d10aebbea1, type: 3}
       propertyPath: fadePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 333169164}
     - target: {fileID: 1683177839883279544, guid: e33f14556176bec47a9ef1d10aebbea1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

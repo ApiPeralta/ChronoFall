@@ -1195,7 +1195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7144770337027609294, guid: a402b90328f37594e9721becde5d01c7, type: 3}
       propertyPath: m_TagString
-      value: Death
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8713997820221855756, guid: a402b90328f37594e9721becde5d01c7, type: 3}
       propertyPath: m_RootOrder
