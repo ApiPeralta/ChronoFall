@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1896549060377364937}
   - component: {fileID: 1072437340566489527}
   - component: {fileID: 2058915610324834052}
-  m_Layer: 0
+  - component: {fileID: 2301393258398688383}
+  m_Layer: 3
   m_Name: Clone
-  m_TagString: Clone
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,7 +170,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550794995344112348}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dacffcfc7e677c478253379161a1118, type: 3}
   m_Name: 
@@ -185,6 +186,18 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &2301393258398688383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550794995344112348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56382902751c8444c8582fa963830115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3309711764590599534
 GameObject:
   m_ObjectHideFlags: 0

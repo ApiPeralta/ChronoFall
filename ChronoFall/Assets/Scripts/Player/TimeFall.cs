@@ -12,20 +12,16 @@ public class TimeFall : MonoBehaviour
     private Movement playerMovement;
 
     private float targetTimeScale = 1f;
-    public StamineBar stamina;
     public float staminaCost = 20f;
 
     void Start()
     {
         playerMovement = FindObjectOfType<Movement>();
-
-        if (stamina == null)
-            Debug.LogWarning("No asignaste el componente StamineBar en TimeFall");
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X) && !isSlowing && stamina != null && stamina.puedeUsarPoder)
+        if (Input.GetKeyDown(KeyCode.X) && !isSlowing)
         {
             ActivateSlowMotion();
         }
@@ -54,8 +50,6 @@ public class TimeFall : MonoBehaviour
             playerMovement.SetSpeedMultiplier(playerMultiplier);
             playerMovement.SetIsSlowing(true);
         }
-
-        stamina.UsarPoder(staminaCost);
 
         timer = slowDuration;
         isSlowing = true;
