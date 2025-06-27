@@ -19,7 +19,10 @@ public class EchoManager : MonoBehaviour
             Invoke(nameof(StopRecordingAndSpawnEcho), recorder.recordDuration);
         }
     }
-
+    public void SetTimeRecorder(TimeRecorder newRecorder)
+    {
+        recorder = newRecorder;
+    }
     void StopRecordingAndSpawnEcho()
     {
         isRecording = false;

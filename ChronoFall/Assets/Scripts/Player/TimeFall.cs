@@ -4,44 +4,48 @@ public class TimeFall : MonoBehaviour
 {
     public float slowMultiplier = 0.3f;
     public float playerBoost = 0.5f;
-    public float slowDuration = 3f;
     public float transitionSpeed = 5f;
 
     private bool isSlowing = false;
-    private float timer = 0f;
     private Movement playerMovement;
+    private PlayerAbilitiesManager stamina;
 
     private float targetTimeScale = 1f;
-    public float staminaCost = 20f;
 
     void Start()
     {
         playerMovement = FindObjectOfType<Movement>();
+        stamina = FindObjectOfType<PlayerAbilitiesManager>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X) && !isSlowing)
+        // Activar slow motion al presionar X si hay estamina
+        if (Input.GetKeyDown(KeyCode.X) && !isSlowing && stamina.CanUseSlow())
         {
             ActivateSlowMotion();
         }
 
-        if (isSlowing)
+        // Cancelar slow si se suelta X o no hay más estamina
+        if ((Input.GetKeyUp(KeyCode.X) && isSlowing) || (isSlowing && !stamina.CanUseSlow()))
         {
-            timer -= Time.unscaledDeltaTime;
-
-            if (timer <= 0f)
-            {
-                ResetTime();
-            }
+            ResetTime();
         }
 
+        // Si se está usando slow, drenamos estamina
+        if (isSlowing)
+        {
+            stamina.DrainSlow(1.5f);
+        }
+
+        // Transición suave
         Time.timeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, transitionSpeed * Time.unscaledDeltaTime);
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 
     void ActivateSlowMotion()
     {
+        isSlowing = true;
         targetTimeScale = slowMultiplier;
 
         if (playerMovement != null)
@@ -50,13 +54,11 @@ public class TimeFall : MonoBehaviour
             playerMovement.SetSpeedMultiplier(playerMultiplier);
             playerMovement.SetIsSlowing(true);
         }
-
-        timer = slowDuration;
-        isSlowing = true;
     }
 
     void ResetTime()
     {
+        isSlowing = false;
         targetTimeScale = 1f;
 
         if (playerMovement != null)
@@ -64,8 +66,6 @@ public class TimeFall : MonoBehaviour
             playerMovement.SetSpeedMultiplier(1f);
             playerMovement.SetIsSlowing(false);
         }
-
-        isSlowing = false;
-        timer = 0f;
     }
 }
+

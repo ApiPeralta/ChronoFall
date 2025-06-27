@@ -22,9 +22,24 @@ public class TriggerToActiveSniper : MonoBehaviour
             var line = sniperLaser.GetComponent<LineRenderer>();
             if (line != null)
                 line.enabled = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Desactiva el objeto si estaba desactivado
+            sniperLaser.SetActive(false);
 
-            // Opcional: desactivar el trigger para que solo pase una vez
-            gameObject.SetActive(false);
+            // Activar el script (por ejemplo SniperLaser.cs)
+            var script = sniperLaser.GetComponent<SniperEnemy>();
+            if (script != null)
+                script.enabled = false;
+
+            // Activar el LineRenderer
+            var line = sniperLaser.GetComponent<LineRenderer>();
+            if (line != null)
+                line.enabled = false;
         }
     }
 }

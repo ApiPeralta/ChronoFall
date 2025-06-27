@@ -8,6 +8,11 @@ public class TimeRecorder : MonoBehaviour
     private float timer = 0f;
     private bool isRecording = false;
 
+    private void Start()
+    {
+        FindObjectOfType<EchoManager>().SetTimeRecorder(this);
+    }
+
     [System.Serializable]
     public struct FrameData
     {

@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 360343852431658635, guid: bdf8a8ec8290e194581c51a1b5a2824e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3942628129017718618, guid: bdf8a8ec8290e194581c51a1b5a2824e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -196,6 +200,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdf8a8ec8290e194581c51a1b5a2824e, type: 3}
+--- !u!4 &309462290 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8146053257844903808, guid: bdf8a8ec8290e194581c51a1b5a2824e, type: 3}
+  m_PrefabInstance: {fileID: 309462289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &474696328
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EchoSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 4964379103185129980, guid: be8fe6d4f196c98419e7f2a7dfbde787, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5514532672425046775, guid: be8fe6d4f196c98419e7f2a7dfbde787, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -769,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d5617c415bf0f4587500312ad94a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 309462290}
 --- !u!81 &1547912648
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1048,7 +1061,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 309462289}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b5350b3586ed914dbee870590ed9566, type: 3}
   m_Name: 
