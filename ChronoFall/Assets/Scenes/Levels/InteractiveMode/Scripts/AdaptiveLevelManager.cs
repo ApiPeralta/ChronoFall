@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,14 +6,18 @@ public class AdaptiveLevelManager : MonoBehaviour
 {
     public static AdaptiveLevelManager Instance;
 
-    // Heatmap guardado acumulado por nivel
     private Dictionary<Vector2Int, int> heatmap = new Dictionary<Vector2Int, int>();
 
-    // Par�metros para colocar trampas
-    public GameObject trampaPrefab;
-    public float cellSize = 1f;
-    public int minVisitsForTrap = 5;
+    [Header("Enemigos")]
+    public GameObject[] enemyPrefabs;
+    public int minVisitsForTrap = 3;
     public int maxTrapsPerLevel = 10;
+
+    [Header("Grilla y restricciones")]
+    public float cellSize = 1f;
+    public LayerMask groundLayer;
+
+    private HashSet<Vector2Int> zonasProhibidas = new HashSet<Vector2Int>();
 
     void Awake()
     {
@@ -24,8 +28,6 @@ public class AdaptiveLevelManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        // Opcional: escuchamos cambio de escena
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -36,8 +38,9 @@ public class AdaptiveLevelManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Cada vez que se carga un nivel, generamos trampas basadas en el heatmap guardado
-        GenerateTrapsInLevel();
+        CalcularZonasProhibidas();
+        AtenuarHeatmap();
+        GenerateEnemies();
     }
 
     public void AddPositions(List<Vector2> positions)
@@ -45,7 +48,6 @@ public class AdaptiveLevelManager : MonoBehaviour
         foreach (var pos in positions)
         {
             Vector2Int cell = WorldToGrid(pos);
-
             if (heatmap.ContainsKey(cell))
                 heatmap[cell]++;
             else
@@ -65,42 +67,103 @@ public class AdaptiveLevelManager : MonoBehaviour
         return new Vector3(cell.x * cellSize + cellSize / 2f, cell.y * cellSize + cellSize / 2f, 0);
     }
 
-    void GenerateTrapsInLevel()
+    void CalcularZonasProhibidas()
     {
-        if (trampaPrefab == null)
+        zonasProhibidas.Clear();
+        GameObject[] zonas = GameObject.FindGameObjectsWithTag("ZonaProhibida");
+
+        foreach (var zona in zonas)
         {
-            Debug.LogWarning("AdaptiveLevelManager: No hay trampa prefab asignado.");
-            return;
-        }
-
-        // Limpiamos trampas anteriores en la escena (opcional)
-        var oldTraps = GameObject.FindGameObjectsWithTag("Death");
-        foreach (var trap in oldTraps)
-            Destroy(trap);
-
-        // Ordenamos las celdas por cantidad de visitas descendente
-        var sortedCells = new List<KeyValuePair<Vector2Int, int>>(heatmap);
-        sortedCells.Sort((a, b) => b.Value.CompareTo(a.Value));
-
-        int trapsPlaced = 0;
-
-        foreach (var cell in sortedCells)
-        {
-            if (cell.Value >= minVisitsForTrap)
+            BoxCollider2D box = zona.GetComponent<BoxCollider2D>();
+            if (box != null)
             {
-                Vector3 pos = GridToWorld(cell.Key);
-                Instantiate(trampaPrefab, pos, Quaternion.identity);
-                trapsPlaced++;
+                Vector2 min = box.bounds.min;
+                Vector2 max = box.bounds.max;
 
-                if (trapsPlaced >= maxTrapsPerLevel)
-                    break;
+                for (float x = min.x; x <= max.x; x += cellSize)
+                {
+                    for (float y = min.y; y <= max.y; y += cellSize)
+                    {
+                        Vector2Int cell = WorldToGrid(new Vector2(x, y));
+                        zonasProhibidas.Add(cell);
+                    }
+                }
             }
         }
     }
+
+    void AtenuarHeatmap()
+    {
+        var keys = new List<Vector2Int>(heatmap.Keys);
+        foreach (var key in keys)
+        {
+            heatmap[key] = Mathf.Max(heatmap[key] / 2, 0);
+        }
+    }
+
+    bool HayAlgoEn(Vector3 posicion, Vector2 tamaño)
+    {
+        return Physics2D.OverlapBox(posicion, tamaño, 0f) != null;
+    }
+
+    void GenerateEnemies()
+    {
+        Debug.Log("Generando enemigos...");
+
+        if (enemyPrefabs == null || enemyPrefabs.Length == 0)
+        {
+            Debug.LogWarning("No hay enemigos en el array.");
+            return;
+        }
+
+        var sortedCells = new List<KeyValuePair<Vector2Int, int>>(heatmap);
+        sortedCells.Sort((a, b) => b.Value.CompareTo(a.Value));
+
+        int enemiesPlaced = 0;
+
+        foreach (var cell in sortedCells)
+        {
+            Debug.Log($"Celda {cell.Key} con {cell.Value} visitas");
+
+            if (cell.Value >= minVisitsForTrap && !zonasProhibidas.Contains(cell.Key))
+            {
+                Vector3 enemyPos = GridToWorld(cell.Key);
+
+                // TEMP: Desactivamos check de solapamiento
+                // if (HayAlgoEn(enemyPos, new Vector2(1f, 1f))) continue;
+
+                GameObject prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+                GameObject enemy = Instantiate(prefab, enemyPos, Quaternion.identity);
+                DontDestroyOnLoad(enemy);
+                Debug.Log($"Instanciado enemigo en {enemyPos}");
+
+                enemiesPlaced++;
+                if (enemiesPlaced >= maxTrapsPerLevel)
+                    break;
+            }
+        }
+
+        if (enemiesPlaced == 0)
+            Debug.Log("No se generó ningún enemigo.");
+    }
+
 
     public void ClearHeatmap()
     {
         heatmap.Clear();
     }
+
+#if UNITY_EDITOR
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        foreach (var cell in zonasProhibidas)
+        {
+            Gizmos.DrawWireCube(GridToWorld(cell), new Vector3(cellSize, cellSize, 0));
+        }
+    }
+#endif
 }
+
+
 

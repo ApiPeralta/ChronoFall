@@ -118,7 +118,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.062782586}
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!114 &6102632620111887640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +176,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 91247357659606657, guid: ef1ea5888d5dd754b8c6abf6c6dddf74, type: 3}
   firePoint: {fileID: 1074676337036133751}
   fireInterval: 3
+  aimSpeed: 360
 --- !u!120 &1272534264857665106
 LineRenderer:
   serializedVersion: 2
@@ -510,7 +511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7144770337027609294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6976, y: 2.1125, z: 0.22417}
+  m_LocalPosition: {x: 1.6976, y: 16.5, z: 0.22417}
   m_LocalScale: {x: 0.7364563, y: 0.7364563, z: 0.7364563}
   m_ConstrainProportionsScale: 0
   m_Children:
