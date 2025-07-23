@@ -5241,7 +5241,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 458b69c80e0192f49abcf6cbdd2e9451, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5264,11 +5264,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452ead47ff6008945a7923c9ee18a2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  jumpForce: 6
-  speedMultiplier: 1
+  moveSpeed: 15
   acceleration: 20
-  deceleration: 25
+  deceleration: 15
+  jumpForce: 7
+  coyoteTime: 0.15
+  jumpBufferTime: 0.1
+  jumpCutMultiplier: 0.5
+  wallSlideSpeed: 1
+  wallJumpForce: 10
+  wallJumpHorizontalForce: 7
+  wallJumpLockTime: 0.1
   groundCheck: {fileID: 5911303404280925771}
   groundCheckRadius: 0.2
   Ground:
@@ -5279,10 +5285,7 @@ MonoBehaviour:
   wallCheckRadius: 0.2
   wallLayer:
     serializedVersion: 2
-    m_Bits: 0
-  wallSlideSpeed: 1
-  wallJumpForce: 10
-  wallJumpHorizontalForce: 7
+    m_Bits: 64
 --- !u!61 &2924877191961463171
 BoxCollider2D:
   m_ObjectHideFlags: 0
