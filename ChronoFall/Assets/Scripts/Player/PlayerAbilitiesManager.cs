@@ -73,5 +73,9 @@ public class PlayerAbilitiesManager : MonoBehaviour
         if (currentClones < maxClones)
             currentClones++;
     }
+    public float GetSlowStaminaNormalized()
+    {
+        return currentSlowStamina / maxSlowStamina;
+    }
 }
 

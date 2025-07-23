@@ -6,7 +6,7 @@ public class TimeRecorder : MonoBehaviour
     public float recordDuration = 3f;
     private List<FrameData> recordedFrames = new List<FrameData>();
     private float timer = 0f;
-    private bool isRecording = false;
+    public bool isRecording = false;
 
     private void Start()
     {
