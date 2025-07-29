@@ -5264,9 +5264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452ead47ff6008945a7923c9ee18a2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  acceleration: 20
-  deceleration: 15
+  moveSpeed: 20
+  acceleration: 10
+  deceleration: 10
   jumpForce: 7
   coyoteTime: 0.15
   jumpBufferTime: 0.1
@@ -5520,6 +5520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recordDuration: 3
+  isRecording: 0
 --- !u!114 &247088868115019026
 MonoBehaviour:
   m_ObjectHideFlags: 0
