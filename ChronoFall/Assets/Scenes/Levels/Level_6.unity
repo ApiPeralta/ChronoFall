@@ -845,7 +845,7 @@ GameObject:
   - component: {fileID: 675947731}
   - component: {fileID: 675947730}
   - component: {fileID: 675947729}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (8)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1332,7 +1332,7 @@ GameObject:
   - component: {fileID: 1533103915}
   - component: {fileID: 1533103914}
   - component: {fileID: 1533103913}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2119,7 +2119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336670540240917504, guid: 6a5df24fc6aa57d42a4b12f4449e5d74, type: 3}
       propertyPath: fireRate
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6336670540240917504, guid: 6a5df24fc6aa57d42a4b12f4449e5d74, type: 3}
       propertyPath: rotationSpeed
