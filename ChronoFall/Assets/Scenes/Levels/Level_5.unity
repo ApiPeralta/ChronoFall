@@ -1343,9 +1343,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2667360510700325908, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1865010894}
+    - target: {fileID: 2667360510700325908, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ContinueGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667360510700325908, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FadeOut, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667360510700325908, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6002975136871976540, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042523532252368799, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042523532252368799, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042523532252368799, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1865010894}
+    - target: {fileID: 8042523532252368799, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042523532252368799, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042523532252368799, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FadeOut, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042523532252368799, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8146744607599677142, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1383,6 +1427,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1718898241 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7543187762420425440, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+  m_PrefabInstance: {fileID: 1718898239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1840379125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,8 +1555,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840379125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.276, y: 9.7733, z: 0}
-  m_LocalScale: {x: 2.3869941, y: 5.7053704, z: 1}
+  m_LocalPosition: {x: 7.339, y: 11.8002, z: 0}
+  m_LocalScale: {x: 1.3072538, y: 9.229505, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1605,6 +1654,10 @@ PrefabInstance:
       propertyPath: fadePanel
       value: 
       objectReference: {fileID: 1718898240}
+    - target: {fileID: 946036969412295235, guid: e33f14556176bec47a9ef1d10aebbea1, type: 3}
+      propertyPath: menuPanel
+      value: 
+      objectReference: {fileID: 1718898241}
     - target: {fileID: 4857427940933195803, guid: e33f14556176bec47a9ef1d10aebbea1, type: 3}
       propertyPath: m_Name
       value: Play
@@ -1658,6 +1711,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e33f14556176bec47a9ef1d10aebbea1, type: 3}
+--- !u!114 &1865010894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 946036969412295235, guid: e33f14556176bec47a9ef1d10aebbea1, type: 3}
+  m_PrefabInstance: {fileID: 1865010893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2432be5e29e6ae47ac5f45cef2e68fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1877984707
 GameObject:
   m_ObjectHideFlags: 0

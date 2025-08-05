@@ -5264,17 +5264,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452ead47ff6008945a7923c9ee18a2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
-  acceleration: 10
-  deceleration: 10
+  moveSpeed: 7
   jumpForce: 7
   coyoteTime: 0.15
   jumpBufferTime: 0.1
   jumpCutMultiplier: 0.5
   wallSlideSpeed: 1
-  wallJumpForce: 10
+  wallJumpForce: 7
   wallJumpHorizontalForce: 7
-  wallJumpLockTime: 0.1
+  wallJumpLockTime: 0.5
   groundCheck: {fileID: 5911303404280925771}
   groundCheckRadius: 0.2
   Ground:
@@ -5360,7 +5358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowMultiplier: 0.3
-  playerBoost: 0.6
+  playerBoost: 0.8
   transitionSpeed: 5
 --- !u!114 &7708098878344682048
 MonoBehaviour:

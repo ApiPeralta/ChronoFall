@@ -1,11 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     [Header("Movimiento")]
     public float moveSpeed = 6f;
-    public float acceleration = 80f;
-    public float deceleration = 60f;
 
     [Header("Salto")]
     public float jumpForce = 12f;
@@ -47,6 +45,8 @@ public class Movement : MonoBehaviour
     private bool isSlowing = false;
     private float speedMultiplier = 1f;
 
+    private int lastWallJumpDir = 0; // -1 izquierda, 1 derecha, 0 = ninguno
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,15 +54,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        // Input horizontal
-        moveInput = 0f;
-        bool blockInput = wallJumping && !isGrounded;
-
-        if (!blockInput)
-        {
-            if (Input.GetKey(KeyCode.A)) moveInput = -1f;
-            if (Input.GetKey(KeyCode.D)) moveInput = 1f;
-        }
+        // Movimiento con flechas o A/D
+        moveInput = Input.GetAxisRaw("Horizontal");
 
         // Chequeos
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, Ground);
@@ -71,36 +64,48 @@ public class Movement : MonoBehaviour
 
         // Coyote time
         if (isGrounded)
-            coyoteCounter = coyoteTime;
-        else
-            coyoteCounter -= Time.deltaTime;
-
-        // Jump buffer
-        if (Input.GetKeyDown(KeyCode.W))
-            jumpBufferCounter = jumpBufferTime;
-        else
-            jumpBufferCounter -= Time.deltaTime;
-
-        // Salto
-        if (jumpBufferCounter > 0 && (coyoteCounter > 0 || isWallSliding))
         {
-            if (isWallSliding && !isGrounded)
-            {
-                Vector2 dir = isTouchingWallLeft ? Vector2.right : Vector2.left;
-                rb.velocity = new Vector2(dir.x * wallJumpHorizontalForce, wallJumpForce);
-                wallJumping = true;
-                wallJumpLockCounter = wallJumpLockTime;
-            }
-            else
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
-
-            jumpBufferCounter = 0;
-            isJumping = true;
+            coyoteCounter = coyoteTime;
+            lastWallJumpDir = 0; // resetea wall jump
+        }
+        else
+        {
+            coyoteCounter -= Time.deltaTime;
         }
 
-        // Cortar salto si se suelta la tecla
+        // Jump buffer
+        if (Input.GetKeyDown(KeyCode.W)) jumpBufferCounter = jumpBufferTime;
+        else jumpBufferCounter -= Time.deltaTime;
+
+        // Salto y wall jump
+        if (jumpBufferCounter > 0)
+        {
+            if (isGrounded || coyoteCounter > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                isJumping = true;
+                jumpBufferCounter = 0;
+            }
+            else if (!isGrounded && (isTouchingWallLeft || isTouchingWallRight))
+            {
+                int currentWallDir = isTouchingWallLeft ? -1 : 1;
+
+                if (currentWallDir != lastWallJumpDir)
+                {
+                    Vector2 dir = currentWallDir == -1 ? Vector2.right : Vector2.left;
+                    rb.velocity = new Vector2(dir.x * wallJumpHorizontalForce, wallJumpForce);
+
+                    wallJumping = true;
+                    wallJumpLockCounter = wallJumpLockTime;
+                    jumpBufferCounter = 0;
+                    isJumping = true;
+
+                    lastWallJumpDir = currentWallDir;
+                }
+            }
+        }
+
+        // Cortar salto
         if (Input.GetKeyUp(KeyCode.W) && isJumping && rb.velocity.y > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpCutMultiplier);
@@ -117,30 +122,25 @@ public class Movement : MonoBehaviour
         {
             if (moveInput > 0 && !isFacingRight) Flip();
             if (moveInput < 0 && isFacingRight) Flip();
-            // Si tocás el suelo, se termina el wall jump
-            if (isGrounded)
-            {
-                wallJumping = false;
-            }
         }
     }
 
     void FixedUpdate()
     {
-        float targetSpeed = moveInput * moveSpeed * speedMultiplier;
-        float speedDiff = targetSpeed - rb.velocity.x;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
-        float movement = accelRate * speedDiff * Time.fixedDeltaTime;
-        rb.AddForce(Vector2.right * movement, ForceMode2D.Force);
-
-        // Desbloquear input después del wall jump
-        if (wallJumping)
+        if (wallJumpLockCounter > 0f)
         {
             wallJumpLockCounter -= Time.fixedDeltaTime;
-            if (wallJumpLockCounter <= 0)
-                wallJumping = false;
         }
+
+        if (wallJumpLockCounter <= 0f)
+        {
+            // Movimiento normal con flechas (solo si no estÃ¡ bloqueado)
+            rb.velocity = new Vector2(moveInput * moveSpeed * speedMultiplier, rb.velocity.y);
+        }
+
+        // Si sigue bloqueado, no se mueve con flechas. Solo mantiene la velocidad del wall jump.
     }
+
 
     void Flip()
     {
@@ -150,20 +150,9 @@ public class Movement : MonoBehaviour
         transform.localScale = scale;
     }
 
-    public void SetSpeedMultiplier(float multiplier)
-    {
-        speedMultiplier = multiplier;
-    }
-
-    public void SetIsSlowing(bool slowing)
-    {
-        isSlowing = slowing;
-    }
-
-    public bool GetIsSlowing()
-    {
-        return isSlowing;
-    }
+    public void SetSpeedMultiplier(float multiplier) => speedMultiplier = multiplier;
+    public void SetIsSlowing(bool slowing) => isSlowing = slowing;
+    public bool GetIsSlowing() => isSlowing;
 
     private void OnDrawGizmosSelected()
     {

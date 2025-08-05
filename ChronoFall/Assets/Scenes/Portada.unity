@@ -588,6 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadePanel: {fileID: 1191351694}
+  menuPanel: {fileID: 0}
   fadeSpeed: 1
 --- !u!1 &1702124854
 GameObject:
