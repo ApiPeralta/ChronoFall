@@ -77,5 +77,9 @@ public class PlayerAbilitiesManager : MonoBehaviour
     {
         return currentSlowStamina / maxSlowStamina;
     }
+    public float GetGliderStaminaNormalized()
+    {
+        return currentGlideStamina / maxGlideStamina;
+    }
 }
 

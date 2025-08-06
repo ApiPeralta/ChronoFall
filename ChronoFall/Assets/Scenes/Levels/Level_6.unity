@@ -1876,6 +1876,10 @@ PrefabInstance:
       propertyPath: abilities
       value: 
       objectReference: {fileID: 1637014812}
+    - target: {fileID: 1509545984356359951, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1675552310031529844, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1976,9 +1980,17 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5429272583986371392, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6002975136871976540, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7916936206409186719, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8042523532252368799, guid: 2921f9c80accc1f4184ce8ba2938ee14, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

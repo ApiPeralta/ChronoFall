@@ -5358,8 +5358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowMultiplier: 0.3
-  playerBoost: 0.8
-  transitionSpeed: 5
+  playerBoost: 0.65
+  transitionSpeed: 4
 --- !u!114 &7708098878344682048
 MonoBehaviour:
   m_ObjectHideFlags: 0

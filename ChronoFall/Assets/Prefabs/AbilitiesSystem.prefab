@@ -59,13 +59,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1335d3b5da81474bb1bdca91f8f67d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSlowStamina: 5
+  maxSlowStamina: 3
   slowRegenRate: 1
   slowDrainRate: 1.5
   currentSlowStamina: 0
-  maxGlideStamina: 4
+  maxGlideStamina: 6
   glideDrainRate: 1
-  glideRegenRate: 0.5
+  glideRegenRate: 1
   currentGlideStamina: 0
   maxClones: 2
   currentClones: 0

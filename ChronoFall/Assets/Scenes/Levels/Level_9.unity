@@ -1368,9 +1368,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1068122230441133465, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: sniperLaser
+      value: 
+      objectReference: {fileID: 2059989499}
+    - target: {fileID: 1272534264857665106, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1921391098777375103, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
       propertyPath: m_Size.x
-      value: 6.328888
+      value: 10.242756
       objectReference: {fileID: 0}
     - target: {fileID: 1921391098777375103, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
       propertyPath: m_Size.y
@@ -1378,11 +1386,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1921391098777375103, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
       propertyPath: m_Offset.x
-      value: 1.5098519
+      value: 1.3001803
       objectReference: {fileID: 0}
     - target: {fileID: 1921391098777375103, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
       propertyPath: m_Offset.y
       value: -7.238406
+      objectReference: {fileID: 0}
+    - target: {fileID: 6102632620111887640, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7144770337027609294, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
       propertyPath: m_Name
@@ -1729,6 +1741,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2059989499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3213889850237223269, guid: d17ddc78df0a02341bb0cca51b511841, type: 3}
+  m_PrefabInstance: {fileID: 1553390964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5420117538388950303
 PrefabInstance:
   m_ObjectHideFlags: 0

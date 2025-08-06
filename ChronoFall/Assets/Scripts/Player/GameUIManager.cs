@@ -6,6 +6,7 @@ public class GameUIManager : MonoBehaviour
 {
     [Header("UI Elements")]
     public Slider slowStaminaSlider;
+    public Slider gliderStaminaSlider;
     public TextMeshProUGUI cloneCounterText;
     public TextMeshProUGUI recordIndicatorText;
 
@@ -18,6 +19,7 @@ public class GameUIManager : MonoBehaviour
         if (abilities != null)
         {
             slowStaminaSlider.value = abilities.GetSlowStaminaNormalized();
+            gliderStaminaSlider.value = abilities.GetGliderStaminaNormalized();
             cloneCounterText.text = "x " + abilities.currentClones.ToString();
         }
 
