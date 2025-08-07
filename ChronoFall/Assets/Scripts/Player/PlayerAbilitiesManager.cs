@@ -15,7 +15,7 @@ public class PlayerAbilitiesManager : MonoBehaviour
     public float currentGlideStamina;
 
     [Header("Clones")]
-    public int maxClones = 3;
+    public int maxClones = 2;
     public int currentClones;
 
     void Start()

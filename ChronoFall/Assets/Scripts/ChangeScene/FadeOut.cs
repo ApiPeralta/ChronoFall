@@ -20,6 +20,13 @@ public class FadeOut : MonoBehaviour
             menuPanel.SetActive(menuOn);
         }
     }
+    public void ExitGame()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // Para que funcione en el editor
+#endif
+    }
     public void StartFade()
     {
         if (!isFading)

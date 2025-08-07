@@ -15,6 +15,8 @@ public class PlayerCloneThrower : MonoBehaviour
     private LineRenderer lineRenderer;
     private PlayerAbilitiesManager stamina;
 
+    public float cloneLifetime = 5f;
+
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -60,14 +62,16 @@ public class PlayerCloneThrower : MonoBehaviour
         if (stamina == null || !stamina.CanSpawnClone())
             return;
 
-        if (currentClone != null)
-            Destroy(currentClone);
-
-        currentClone = Instantiate(clonePrefab, throwPoint.position, Quaternion.identity);
-        Rigidbody2D rb = currentClone.GetComponent<Rigidbody2D>();
+        // Crear nuevo clon sin destruir el anterior
+        GameObject newClone = Instantiate(clonePrefab, throwPoint.position, Quaternion.identity);
+        Rigidbody2D rb = newClone.GetComponent<Rigidbody2D>();
         rb.velocity = direction * throwForce;
 
-        stamina.UseClone(); // se gasta un clon
+        // Asignar el tiempo de vida al clon
+        CloneSelfDestruct selfDestruct = newClone.AddComponent<CloneSelfDestruct>();
+        selfDestruct.lifetime = cloneLifetime;
+
+        stamina.UseClone(); // Gastar un clon
     }
 
     void ShowTrajectory(Vector2 direction)
